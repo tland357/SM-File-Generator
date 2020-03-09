@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{aa9bc39c-bfba-4b61-8c5b-7c2c1839c84c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Model\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{3eebf6cb-f965-474a-b229-afee7a821eeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PatternGenerator">
+      <UniqueIdentifier>{6bc25733-4f90-4fcf-8ef5-4260d2f50761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{0bfee137-0007-4979-a301-0ca1f3c154d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MusicAnalyzer.cpp">
+      <Filter>Model\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Step.cpp">
+      <Filter>Model\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Measure.cpp">
+      <Filter>Model\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WINMapper.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="APPMapper.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="SongChartInterface.cpp">
+      <Filter>Interfaces</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MusicAnalyzer.hpp">
+      <Filter>Model\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Step.hpp">
+      <Filter>Model\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Measure.hpp">
+      <Filter>Model\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.hpp">
+      <Filter>Model\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonStepPatterns.hpp">
+      <Filter>PatternGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="WINMapper.hpp">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="APPMapper.hpp">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="SongChartInterface.hpp">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
