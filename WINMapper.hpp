@@ -79,6 +79,8 @@ protected:
 	wxScrolledWindow* m_scrolledWindow1;
 	wxGrid* GRDSteps;
 	SongChartInterface songChartInterface;
+	wxStaticText* LBLBeatsPerMinute;
+	wxTextCtrl* TXTBeatsPerMinute;
 	// Virtual event handlers, overide them in your derived class
 	virtual void SetupFile(wxFileDirPickerEvent& event) { event.Skip(); }
 	virtual void UploadedBackgroundImage(wxFileDirPickerEvent& event) { event.Skip(); }
@@ -142,6 +144,9 @@ protected:
 	}
 	virtual void GenerateSimData(wxCommandEvent& event) { 
 		songChartInterface.PopulateGrid();
+	}
+	virtual void SetBPM(wxCommandEvent& event) {
+
 	}
 
 

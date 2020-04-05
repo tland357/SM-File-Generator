@@ -13,5 +13,7 @@ ostream& operator<<(ostream& os, Measure& m) {
 }
 
 Measure::Measure(vector<Step> steps) {
-	Steps = steps;
+	for (Step step : steps) {
+		Steps.push_back(step);
+	}
 }

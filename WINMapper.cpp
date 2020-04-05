@@ -114,6 +114,13 @@ WINMapper::WINMapper(wxWindow* parent, wxWindowID id, const wxString& title, con
 
 	fgSizer3->Add(m_panel9, 1, wxEXPAND | wxALL, 5);
 
+	LBLBeatsPerMinute = new wxStaticText(this, wxID_ANY, wxT("Beats Per Minute: "), wxDefaultPosition, wxDefaultSize, 0);
+	LBLBeatsPerMinute->Wrap(-1);
+	fgSizer3->Add(LBLBeatsPerMinute, 0, wxALL, 5);
+
+	TXTBeatsPerMinute = new wxTextCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0);
+	fgSizer3->Add(TXTBeatsPerMinute, 0, wxALL, 5);
+
 	LBLBeatsPerMeasure = new wxStaticText(this, wxID_ANY, wxT("Number of Beats Per Measure:"), wxDefaultPosition, wxDefaultSize, 0);
 	LBLBeatsPerMeasure->Wrap(-1);
 	fgSizer3->Add(LBLBeatsPerMeasure, 0, wxALL, 5);
@@ -203,7 +210,7 @@ WINMapper::WINMapper(wxWindow* parent, wxWindowID id, const wxString& title, con
 
 	// Cell Defaults
 	GRDSteps->SetDefaultCellAlignment(wxALIGN_CENTER, wxALIGN_CENTER);
-	bSizer1->Add(GRDSteps, 0, wxALL, 5);
+	bSizer1->Add(GRDSteps, 0, wxEXPAND | wxALL, 5);
 
 
 	m_scrolledWindow1->SetSizer(bSizer1);
@@ -235,7 +242,7 @@ WINMapper::WINMapper(wxWindow* parent, wxWindowID id, const wxString& title, con
 	CHKMines->Connect(wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler(WINMapper::DirtyData), NULL, this);
 	SLDJumpPercentage->Connect(wxEVT_SLIDER, wxCommandEventHandler(WINMapper::DirtyData), NULL, this);
 	BTNGenerateFile->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(WINMapper::GenerateSimData), NULL, this);
-
+	TXTBeatsPerMinute->Connect(wxEVT_TEXT, wxCommandEventHandler(WINMapper::SetBPM), NULL, this);
 
 	songChartInterface = SongChartInterface(createTestSong(), GRDSteps);
 
@@ -261,5 +268,5 @@ WINMapper::~WINMapper()
 	CHKMines->Disconnect(wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler(WINMapper::DirtyData), NULL, this);
 	SLDJumpPercentage->Disconnect(wxEVT_SLIDER, wxCommandEventHandler(WINMapper::DirtyData), NULL, this);
 	BTNGenerateFile->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(WINMapper::GenerateSimData), NULL, this);
-
+	TXTBeatsPerMinute->Disconnect(wxEVT_TEXT, wxCommandEventHandler(WINMapper::SetBPM), NULL, this);
 }
