@@ -453,7 +453,7 @@
 			// 
 			// BannerSelector
 			// 
-			this.BannerSelector.AllowedFileTypes = "jpg,jpeg,jpe,jfif,png,bmp";
+			this.BannerSelector.AllowedFileTypes = "";
 			this.BannerSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.BannerSelector.BackColor = System.Drawing.SystemColors.Control;
@@ -499,8 +499,7 @@
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.BannerSelector.Enabled = false;
-			this.BannerSelector.Filter = "\"Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png, *.bmp) | *.jpg; *.jpeg; *.jpe;" +
-    " *.jfif; *.png; *.bmp\";";
+			this.BannerSelector.Filter = "";
 			this.BannerSelector.Location = new System.Drawing.Point(9, 104);
 			this.BannerSelector.LockFileFoundEvent = false;
 			this.BannerSelector.Name = "BannerSelector";
@@ -511,7 +510,7 @@
 			// 
 			// BackGroundImageSelector
 			// 
-			this.BackGroundImageSelector.AllowedFileTypes = "jpg,jpeg,jpe,jfif,png,bmp";
+			this.BackGroundImageSelector.AllowedFileTypes = "";
 			this.BackGroundImageSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.BackGroundImageSelector.ButtonText = "Select Background Image";
@@ -554,8 +553,7 @@
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.BackGroundImageSelector.Enabled = false;
-			this.BackGroundImageSelector.Filter = "\"Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png, *.bmp) | *.jpg; *.jpeg; *.jpe;" +
-    " *.jfif; *.png; *.bmp\";";
+			this.BackGroundImageSelector.Filter = "";
 			this.BackGroundImageSelector.Location = new System.Drawing.Point(9, 56);
 			this.BackGroundImageSelector.LockFileFoundEvent = false;
 			this.BackGroundImageSelector.Name = "BackGroundImageSelector";

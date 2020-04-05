@@ -198,14 +198,14 @@ namespace SimFileMapperView
 					smFile.WriteLine("#STOPS:;\n#BGCHANGES:;\n#FGCHANGES:;");
 					smFile.WriteLine(song.ToString(TXTMapper.Text, TXTDifficultyName.Text, TXTDifficultyNumber.Text));
 				}
-				if (File.Exists("ArrowVortex.exe"))
+				if (File.Exists("ArrowVortex\\ArrowVortex.exe"))
 				{
 					result = MessageBox.Show("Would you like to open in ArrowVortex?", "Arrow Vortex", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 					if (result == DialogResult.Yes)
 					{
 						Process arrowVortex = new Process()
 						{
-							StartInfo = new ProcessStartInfo("ArrowVortex.exe", '"' + dialog.FileName + '"')
+							StartInfo = new ProcessStartInfo("ArrowVortex\\ArrowVortex.exe", '"' + dialog.FileName + '"')
 						};
 						arrowVortex.Start();
 					}
