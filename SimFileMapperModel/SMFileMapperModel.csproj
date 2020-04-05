@@ -8,10 +8,4 @@
     <PackageReference Include="NAudio" Version="1.10.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="LinqStatistics">
-      <HintPath>..\SimFileMapper\LinqStatistics.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

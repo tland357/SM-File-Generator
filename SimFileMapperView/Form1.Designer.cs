@@ -31,6 +31,10 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.BTNAddToSimFile = new System.Windows.Forms.Button();
 			this.GBXSongSettings = new System.Windows.Forms.GroupBox();
+			this.TXTDifficultyNumber = new System.Windows.Forms.TextBox();
+			this.TXTDifficultyName = new System.Windows.Forms.TextBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
 			this.trackBar2 = new System.Windows.Forms.TrackBar();
 			this.TXTMapper = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
@@ -55,15 +59,11 @@
 			this.checkBox7 = new System.Windows.Forms.CheckBox();
 			this.BTNExportSimFile = new System.Windows.Forms.Button();
 			this.BTNGenerateData = new System.Windows.Forms.Button();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.BannerSelector = new FileSelectorLibrary.FileSelector();
 			this.BackGroundImageSelector = new FileSelectorLibrary.FileSelector();
 			this.mp3Selector = new FileSelectorLibrary.FileSelector();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.TXTDifficultyName = new System.Windows.Forms.TextBox();
-			this.TXTDifficultyNumber = new System.Windows.Forms.TextBox();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.panel1.SuspendLayout();
 			this.GBXSongSettings.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
@@ -83,14 +83,14 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(3, 3);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(633, 492);
+			this.panel1.Size = new System.Drawing.Size(634, 492);
 			this.panel1.TabIndex = 1;
 			// 
 			// BTNAddToSimFile
 			// 
 			this.BTNAddToSimFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.BTNAddToSimFile.Enabled = false;
-			this.BTNAddToSimFile.Location = new System.Drawing.Point(433, 104);
+			this.BTNAddToSimFile.Location = new System.Drawing.Point(434, 104);
 			this.BTNAddToSimFile.Name = "BTNAddToSimFile";
 			this.BTNAddToSimFile.Size = new System.Drawing.Size(189, 39);
 			this.BTNAddToSimFile.TabIndex = 7;
@@ -132,14 +132,49 @@
 			this.GBXSongSettings.Enabled = false;
 			this.GBXSongSettings.Location = new System.Drawing.Point(9, 161);
 			this.GBXSongSettings.Name = "GBXSongSettings";
-			this.GBXSongSettings.Size = new System.Drawing.Size(613, 322);
+			this.GBXSongSettings.Size = new System.Drawing.Size(614, 322);
 			this.GBXSongSettings.TabIndex = 6;
 			this.GBXSongSettings.TabStop = false;
 			this.GBXSongSettings.Text = "Song Settings";
 			// 
+			// TXTDifficultyNumber
+			// 
+			this.TXTDifficultyNumber.Location = new System.Drawing.Point(131, 140);
+			this.TXTDifficultyNumber.MaxLength = 2;
+			this.TXTDifficultyNumber.Name = "TXTDifficultyNumber";
+			this.TXTDifficultyNumber.Size = new System.Drawing.Size(81, 22);
+			this.TXTDifficultyNumber.TabIndex = 28;
+			this.TXTDifficultyNumber.TextChanged += new System.EventHandler(this.NumberValidation);
+			// 
+			// TXTDifficultyName
+			// 
+			this.TXTDifficultyName.Location = new System.Drawing.Point(109, 112);
+			this.TXTDifficultyName.MaxLength = 1200;
+			this.TXTDifficultyName.Name = "TXTDifficultyName";
+			this.TXTDifficultyName.Size = new System.Drawing.Size(103, 22);
+			this.TXTDifficultyName.TabIndex = 27;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(6, 140);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(119, 17);
+			this.label10.TabIndex = 26;
+			this.label10.Text = "Difficulty Number:";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(6, 112);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(106, 17);
+			this.label9.TabIndex = 25;
+			this.label9.Text = "Difficulty Name:";
+			// 
 			// trackBar2
 			// 
-			this.trackBar2.Location = new System.Drawing.Point(226, 147);
+			this.trackBar2.Location = new System.Drawing.Point(226, 136);
 			this.trackBar2.Maximum = 100;
 			this.trackBar2.Minimum = 50;
 			this.trackBar2.Name = "trackBar2";
@@ -247,7 +282,7 @@
 			// JumpPercentLabel
 			// 
 			this.JumpPercentLabel.AutoSize = true;
-			this.JumpPercentLabel.Location = new System.Drawing.Point(229, 213);
+			this.JumpPercentLabel.Location = new System.Drawing.Point(416, 158);
 			this.JumpPercentLabel.Name = "JumpPercentLabel";
 			this.JumpPercentLabel.Size = new System.Drawing.Size(171, 17);
 			this.JumpPercentLabel.TabIndex = 13;
@@ -256,7 +291,7 @@
 			// trackBar1
 			// 
 			this.trackBar1.Enabled = false;
-			this.trackBar1.Location = new System.Drawing.Point(226, 237);
+			this.trackBar1.Location = new System.Drawing.Point(419, 177);
 			this.trackBar1.Maximum = 100;
 			this.trackBar1.Name = "trackBar1";
 			this.trackBar1.Size = new System.Drawing.Size(171, 56);
@@ -359,7 +394,7 @@
 			// 
 			this.BTNExportSimFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.BTNExportSimFile.Enabled = false;
-			this.BTNExportSimFile.Location = new System.Drawing.Point(433, 56);
+			this.BTNExportSimFile.Location = new System.Drawing.Point(434, 56);
 			this.BTNExportSimFile.Name = "BTNExportSimFile";
 			this.BTNExportSimFile.Size = new System.Drawing.Size(189, 39);
 			this.BTNExportSimFile.TabIndex = 4;
@@ -371,7 +406,7 @@
 			// 
 			this.BTNGenerateData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.BTNGenerateData.Enabled = false;
-			this.BTNGenerateData.Location = new System.Drawing.Point(433, 9);
+			this.BTNGenerateData.Location = new System.Drawing.Point(434, 9);
 			this.BTNGenerateData.Name = "BTNGenerateData";
 			this.BTNGenerateData.Size = new System.Drawing.Size(189, 39);
 			this.BTNGenerateData.TabIndex = 3;
@@ -379,39 +414,14 @@
 			this.BTNGenerateData.UseVisualStyleBackColor = true;
 			this.BTNGenerateData.Click += new System.EventHandler(this.BTNGenerateData_Click);
 			// 
-			// tableLayoutPanel1
-			// 
-			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.48969F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.51031F));
-			this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 1;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(921, 498);
-			this.tableLayoutPanel1.TabIndex = 0;
-			// 
-			// textBox1
-			// 
-			this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBox1.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox1.Location = new System.Drawing.Point(642, 3);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.ReadOnly = true;
-			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox1.Size = new System.Drawing.Size(276, 492);
-			this.textBox1.TabIndex = 2;
-			// 
 			// BannerSelector
 			// 
 			this.BannerSelector.AllowedFileTypes = "jpg,jpeg,jpe,jfif,png,bmp";
 			this.BannerSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.BannerSelector.ButtonText = "Select Cover Image";
+			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -458,7 +468,7 @@
 			this.BannerSelector.Name = "BannerSelector";
 			this.BannerSelector.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
 			this.BannerSelector.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-			this.BannerSelector.Size = new System.Drawing.Size(413, 39);
+			this.BannerSelector.Size = new System.Drawing.Size(414, 39);
 			this.BannerSelector.TabIndex = 2;
 			// 
 			// BackGroundImageSelector
@@ -467,6 +477,8 @@
 			this.BackGroundImageSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.BackGroundImageSelector.ButtonText = "Select Background Image";
+			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -511,7 +523,7 @@
 			this.BackGroundImageSelector.Name = "BackGroundImageSelector";
 			this.BackGroundImageSelector.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
 			this.BackGroundImageSelector.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-			this.BackGroundImageSelector.Size = new System.Drawing.Size(413, 39);
+			this.BackGroundImageSelector.Size = new System.Drawing.Size(414, 39);
 			this.BackGroundImageSelector.TabIndex = 1;
 			// 
 			// mp3Selector
@@ -552,6 +564,8 @@
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.mp3Selector.Filter = "Music Files (*.mp3),(*.wav)|*.mp3;*.wav";
@@ -560,44 +574,36 @@
 			this.mp3Selector.Name = "mp3Selector";
 			this.mp3Selector.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
 			this.mp3Selector.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-			this.mp3Selector.Size = new System.Drawing.Size(413, 39);
+			this.mp3Selector.Size = new System.Drawing.Size(414, 39);
 			this.mp3Selector.TabIndex = 0;
 			this.mp3Selector.FileFound += new FileSelectorLibrary.FileSelector.FileFoundEventHandler(this.mp3Selector_FileFound);
 			// 
-			// label9
+			// tableLayoutPanel1
 			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(6, 112);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(106, 17);
-			this.label9.TabIndex = 25;
-			this.label9.Text = "Difficulty Name:";
+			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.48969F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.51031F));
+			this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 1;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(921, 498);
+			this.tableLayoutPanel1.TabIndex = 0;
 			// 
-			// label10
+			// textBox1
 			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(6, 140);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(119, 17);
-			this.label10.TabIndex = 26;
-			this.label10.Text = "Difficulty Number:";
-			// 
-			// TXTDifficultyName
-			// 
-			this.TXTDifficultyName.Location = new System.Drawing.Point(109, 112);
-			this.TXTDifficultyName.MaxLength = 1200;
-			this.TXTDifficultyName.Name = "TXTDifficultyName";
-			this.TXTDifficultyName.Size = new System.Drawing.Size(103, 22);
-			this.TXTDifficultyName.TabIndex = 27;
-			// 
-			// TXTDifficultyNumber
-			// 
-			this.TXTDifficultyNumber.Location = new System.Drawing.Point(131, 140);
-			this.TXTDifficultyNumber.MaxLength = 2;
-			this.TXTDifficultyNumber.Name = "TXTDifficultyNumber";
-			this.TXTDifficultyNumber.Size = new System.Drawing.Size(81, 22);
-			this.TXTDifficultyNumber.TabIndex = 28;
-			this.TXTDifficultyNumber.TextChanged += new System.EventHandler(this.NumberValidation);
+			this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBox1.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox1.Location = new System.Drawing.Point(643, 3);
+			this.textBox1.Multiline = true;
+			this.textBox1.Name = "textBox1";
+			this.textBox1.ReadOnly = true;
+			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBox1.Size = new System.Drawing.Size(275, 492);
+			this.textBox1.TabIndex = 2;
 			// 
 			// Form1
 			// 
