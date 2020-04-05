@@ -8,6 +8,7 @@ using FileSelectorLibrary;
 using SimFileMapperModel.Model;
 using System.Text;
 using System.Diagnostics;
+using System.Drawing;
 using NAudio.Wave;
 using System.Collections.Generic;
 
@@ -19,6 +20,24 @@ namespace SimFileMapperView
 		{
 			InitializeComponent();
 			StepPattern.CreateStepPatterns();
+			this.Traverse(c =>
+			{
+				if (c is ButtonBase)
+				{
+					ButtonBase b = c as ButtonBase;
+					b.FlatStyle = FlatStyle.Flat;
+					b.FlatAppearance.BorderColor = Color.Black;
+					b.Cursor = Cursors.Hand;
+				}
+				else if (c is TextBox)
+				{
+					TextBox t = c as TextBox;
+					t.BorderStyle = BorderStyle.FixedSingle;
+					t.Cursor = Cursors.IBeam;
+				}
+				//c.BackColor = Color.FromArgb(40, 40, 40);
+				//c.ForeColor = Color.White;
+			});
 			TXTBpm.TextChanged += (sender, e) => {
 				if (song != null)
 				{
@@ -123,7 +142,7 @@ namespace SimFileMapperView
 			try
 			{
 				song.GenerateStepsV2((float)Convert.ToDouble(TXTBpm.Text),(float)Convert.ToDouble(TXTOffset.Text), trackBar2.Value);
-				StringBuilder builder = new StringBuilder("01:00:------" + Environment.NewLine);
+				StringBuilder builder = new StringBuilder("-----------" + Environment.NewLine);
 				int i = 1;
 				foreach (var measure in song.Measures)
 				{
@@ -132,14 +151,14 @@ namespace SimFileMapperView
 					{
 						if (step == null)
 						{
-							builder.Append(i.ToString().PadLeft(3,'0') + ":" + (++j).ToString().PadLeft(2, '0') + ":|    |" + Environment.NewLine);
+							builder.Append(i.ToString().PadLeft(3,'0') + ":" + (++j).ToString().PadLeft(2, '0') + ":    " + Environment.NewLine);
 						}
 						else
 						{
-							builder.Append(i.ToString().PadLeft(3, '0') + ":" + (++j).ToString().PadLeft(2, '0') + ":|" + step.ToArrows() + '|' + Environment.NewLine);
+							builder.Append(i.ToString().PadLeft(3, '0') + ":" + (++j).ToString().PadLeft(2, '0') + ":" + step.ToArrows() + Environment.NewLine);
 						}
 					}
-					builder.Append((++i) + ":0:------" + Environment.NewLine);
+					builder.Append("-----------" + Environment.NewLine);
 				}
 				textBox1.Text = builder.ToString();
 				BTNExportSimFile.Enabled = BTNAddToSimFile.Enabled = true;
@@ -172,8 +191,8 @@ namespace SimFileMapperView
 					smFile.WriteLine("#ARTIST:" + TXTArtist.Text + ";");
 					smFile.WriteLine("#TITLETRANSLIT:;\n#SUBTITLETRANSLIT:;\n#ARTISTTRANSLIT:;\n#GENRE:;\n#CREDIT:;");
 					smFile.WriteLine("#MUSIC:" + mp3Selector.FileName.Split('\\').Last() + ";");
-					smFile.WriteLine("#BANNER:" + BannerSelector.FileName + ";");
-					smFile.WriteLine("#BACKGROUND:" + BackGroundImageSelector.FileName + ";");
+					smFile.WriteLine("#BANNER:" + BannerSelector.FileName.Split('\\').Last() + ";");
+					smFile.WriteLine("#BACKGROUND:" + BackGroundImageSelector.FileName.Split('\\').Last() + ";");
 					smFile.WriteLine("#CDTITLE:;\n#SAMPLESTART:0.000;\n#SAMPLELENGTH:0.000;\n#SELECTABLE:YES;\n#OFFSET:" + (Convert.ToDouble(TXTOffset.Text) / -1000.0));
 					smFile.WriteLine("#BPMS:0.000=" + TXTBpm.Text + ";");
 					smFile.WriteLine("#STOPS:;\n#BGCHANGES:;\n#FGCHANGES:;");

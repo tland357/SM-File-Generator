@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace SimFileMapperModel
 {
 	public static class Extentions
@@ -39,5 +40,7 @@ namespace SimFileMapperModel
 			float IQR = higherQuartile - lowerQuartile;
 			return data.Where(x => x > lowerQuartile - 1.5 * IQR || x < higherQuartile + 1.5 * IQR).Average();
 		}
+
+		
 	}
 }

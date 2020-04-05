@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.BTNAddToSimFile = new System.Windows.Forms.Button();
 			this.GBXSongSettings = new System.Windows.Forms.GroupBox();
@@ -59,11 +60,11 @@
 			this.checkBox7 = new System.Windows.Forms.CheckBox();
 			this.BTNExportSimFile = new System.Windows.Forms.Button();
 			this.BTNGenerateData = new System.Windows.Forms.Button();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.BannerSelector = new FileSelectorLibrary.FileSelector();
 			this.BackGroundImageSelector = new FileSelectorLibrary.FileSelector();
 			this.mp3Selector = new FileSelectorLibrary.FileSelector();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.panel1.SuspendLayout();
 			this.GBXSongSettings.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
@@ -139,7 +140,7 @@
 			// 
 			// TXTDifficultyNumber
 			// 
-			this.TXTDifficultyNumber.Location = new System.Drawing.Point(131, 140);
+			this.TXTDifficultyNumber.Location = new System.Drawing.Point(131, 144);
 			this.TXTDifficultyNumber.MaxLength = 2;
 			this.TXTDifficultyNumber.Name = "TXTDifficultyNumber";
 			this.TXTDifficultyNumber.Size = new System.Drawing.Size(81, 22);
@@ -148,7 +149,7 @@
 			// 
 			// TXTDifficultyName
 			// 
-			this.TXTDifficultyName.Location = new System.Drawing.Point(109, 112);
+			this.TXTDifficultyName.Location = new System.Drawing.Point(109, 114);
 			this.TXTDifficultyName.MaxLength = 1200;
 			this.TXTDifficultyName.Name = "TXTDifficultyName";
 			this.TXTDifficultyName.Size = new System.Drawing.Size(103, 22);
@@ -157,7 +158,7 @@
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(6, 140);
+			this.label10.Location = new System.Drawing.Point(6, 146);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(119, 17);
 			this.label10.TabIndex = 26;
@@ -166,7 +167,7 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(6, 112);
+			this.label9.Location = new System.Drawing.Point(6, 116);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(106, 17);
 			this.label9.TabIndex = 25;
@@ -181,11 +182,12 @@
 			this.trackBar2.Size = new System.Drawing.Size(171, 56);
 			this.trackBar2.TabIndex = 24;
 			this.trackBar2.TickFrequency = 5;
+			this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
 			this.trackBar2.Value = 75;
 			// 
 			// TXTMapper
 			// 
-			this.TXTMapper.Location = new System.Drawing.Point(67, 83);
+			this.TXTMapper.Location = new System.Drawing.Point(67, 85);
 			this.TXTMapper.MaxLength = 1200;
 			this.TXTMapper.Name = "TXTMapper";
 			this.TXTMapper.Size = new System.Drawing.Size(145, 22);
@@ -194,7 +196,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(6, 82);
+			this.label8.Location = new System.Drawing.Point(6, 87);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(60, 17);
 			this.label8.TabIndex = 22;
@@ -202,7 +204,7 @@
 			// 
 			// TXTArtist
 			// 
-			this.TXTArtist.Location = new System.Drawing.Point(56, 52);
+			this.TXTArtist.Location = new System.Drawing.Point(56, 54);
 			this.TXTArtist.MaxLength = 1200;
 			this.TXTArtist.Name = "TXTArtist";
 			this.TXTArtist.Size = new System.Drawing.Size(156, 22);
@@ -211,7 +213,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(6, 53);
+			this.label7.Location = new System.Drawing.Point(6, 56);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(44, 17);
 			this.label7.TabIndex = 20;
@@ -228,7 +230,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(6, 25);
+			this.label6.Location = new System.Drawing.Point(6, 26);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(76, 17);
 			this.label6.TabIndex = 18;
@@ -290,6 +292,7 @@
 			// 
 			// trackBar1
 			// 
+			this.trackBar1.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.trackBar1.Enabled = false;
 			this.trackBar1.Location = new System.Drawing.Point(419, 177);
 			this.trackBar1.Maximum = 100;
@@ -297,6 +300,7 @@
 			this.trackBar1.Size = new System.Drawing.Size(171, 56);
 			this.trackBar1.TabIndex = 12;
 			this.trackBar1.TickFrequency = 10;
+			this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
 			this.trackBar1.Value = 15;
 			// 
 			// checkBox9
@@ -372,6 +376,8 @@
 			// 
 			// TXTBpm
 			// 
+			this.TXTBpm.BackColor = System.Drawing.SystemColors.Window;
+			this.TXTBpm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.TXTBpm.Location = new System.Drawing.Point(276, 24);
 			this.TXTBpm.MaxLength = 10;
 			this.TXTBpm.Name = "TXTBpm";
@@ -405,20 +411,52 @@
 			// BTNGenerateData
 			// 
 			this.BTNGenerateData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BTNGenerateData.BackColor = System.Drawing.SystemColors.Control;
 			this.BTNGenerateData.Enabled = false;
+			this.BTNGenerateData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.BTNGenerateData.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.BTNGenerateData.Location = new System.Drawing.Point(434, 9);
 			this.BTNGenerateData.Name = "BTNGenerateData";
 			this.BTNGenerateData.Size = new System.Drawing.Size(189, 39);
 			this.BTNGenerateData.TabIndex = 3;
 			this.BTNGenerateData.Text = "Generate Data";
-			this.BTNGenerateData.UseVisualStyleBackColor = true;
+			this.BTNGenerateData.UseVisualStyleBackColor = false;
 			this.BTNGenerateData.Click += new System.EventHandler(this.BTNGenerateData_Click);
+			// 
+			// tableLayoutPanel1
+			// 
+			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.48969F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.51031F));
+			this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 1;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(921, 498);
+			this.tableLayoutPanel1.TabIndex = 0;
+			// 
+			// textBox1
+			// 
+			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBox1.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox1.Location = new System.Drawing.Point(643, 3);
+			this.textBox1.Multiline = true;
+			this.textBox1.Name = "textBox1";
+			this.textBox1.ReadOnly = true;
+			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBox1.Size = new System.Drawing.Size(275, 492);
+			this.textBox1.TabIndex = 2;
 			// 
 			// BannerSelector
 			// 
 			this.BannerSelector.AllowedFileTypes = "jpg,jpeg,jpe,jfif,png,bmp";
 			this.BannerSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.BannerSelector.BackColor = System.Drawing.SystemColors.Control;
 			this.BannerSelector.ButtonText = "Select Cover Image";
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -578,41 +616,16 @@
 			this.mp3Selector.TabIndex = 0;
 			this.mp3Selector.FileFound += new FileSelectorLibrary.FileSelector.FileFoundEventHandler(this.mp3Selector_FileFound);
 			// 
-			// tableLayoutPanel1
-			// 
-			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.48969F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.51031F));
-			this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 1;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(921, 498);
-			this.tableLayoutPanel1.TabIndex = 0;
-			// 
-			// textBox1
-			// 
-			this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBox1.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox1.Location = new System.Drawing.Point(643, 3);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.ReadOnly = true;
-			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox1.Size = new System.Drawing.Size(275, 492);
-			this.textBox1.TabIndex = 2;
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.SystemColors.Control;
 			this.ClientSize = new System.Drawing.Size(921, 498);
 			this.Controls.Add(this.tableLayoutPanel1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Text = "SM File Mapper";
 			this.panel1.ResumeLayout(false);
 			this.GBXSongSettings.ResumeLayout(false);
 			this.GBXSongSettings.PerformLayout();
