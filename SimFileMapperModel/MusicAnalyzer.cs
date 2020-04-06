@@ -72,11 +72,7 @@ namespace SimFileMapperModel.Model
 			s.AppendLine("\t0,0,0,0,0:");
 			for (int i = 0; i < Measures.Count; i += 1) 
 			{
-				var Measure = Measures[i];
-				foreach (var step in Measure.Steps)
-				{
-					s.AppendLine(step?.ToString() ?? "0000");
-				}
+				s.Append(Measures[i].ToString());
 				s.AppendLine(i == Measures.Count - 1 ? ";" : ",");
 			}
 			return s.ToString();
@@ -154,7 +150,7 @@ namespace SimFileMapperModel.Model
 			float MillisecondsPerMinute = 60000;
 			Measures = new List<Measure>();
 			float DistanceBetweenBeats = MinutesPerBeat * MillisecondsPerMinute;
-			var NotesInMeasure = Timings.Select(x => ((int)Math.Round((x - msTilStart) / DistanceBetweenBeats * Measure.Resolution) / BeatsPerMeasure) % Measure.Resolution).ToList();
+			var NotesInMeasure = Timings.Select(x => ((int)Math.Round((x - msTilStart) / DistanceBetweenBeats * Measure.Resolution + 1) / BeatsPerMeasure) % Measure.Resolution).ToList();
 			var MeasureToPlace = Timings.Select(x => (int)((x - msTilStart) / DistanceBetweenBeats / BeatsPerMeasure)).ToList();
 			StepPattern pattern = StepPattern.StartsOnRight.GetRandom();
 			int j = 0;
@@ -174,6 +170,15 @@ namespace SimFileMapperModel.Model
 				}
 				Measures[MeasureToPlace[i]].Steps[NotesInMeasure[i]] = pattern.Steps[j++];
 				lookup[NotesInMeasure[i], MeasureToPlace[i]] = true;
+			}
+			Measures.Add(new Measure());
+			for (int m = Measures.Count - 2; m >= 0; m -= 1)
+			{
+				Measures[m + 1].Steps[0] = Measures[m].Steps[Measure.Resolution - 1];
+				for (int n = Measure.Resolution - 2; n >= 0; n -= 1)
+				{
+					Measures[m].Steps[n + 1] = Measures[m].Steps[n];
+				}
 			}
 		}
 	}

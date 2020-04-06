@@ -40,7 +40,25 @@ namespace SimFileMapperModel
 			float IQR = higherQuartile - lowerQuartile;
 			return data.Where(x => x > lowerQuartile - 1.5 * IQR || x < higherQuartile + 1.5 * IQR).Average();
 		}
-
-		
+		public static IEnumerable<T> SkipIndices<T>(this IList<T> list, ICollection<int> indices)
+		{
+			for (int i = 0; i < list.Count; i += 1)
+			{
+				if (!indices.Contains(i))
+				{
+					yield return list[i];
+				}
+			}
+		}
+		public static IEnumerable<T> PickIndices<T>(this IList<T> list, ICollection<int> indices)
+		{
+			for (int i = 0; i < list.Count; i += 1)
+			{
+				if (indices.Contains(i))
+				{
+					yield return list[i];
+				}
+			}
+		}
 	}
 }
