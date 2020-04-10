@@ -145,9 +145,9 @@ namespace SimFileMapperModel
             PCMStream.Position = position;
         }
 
-        public void DetectOnsets(float sensitivity = 1.5f)
+        public void DetectOnsets(out float[] fluxes, float sensitivity = 1.5f)
         {
-            onsetDetection = new OnsetDetection(PCMStream, 1024);
+            onsetDetection = new OnsetDetection(PCMStream, SAMPLE_SIZE);
             // Has finished reading in the audio file
             bool finished = false;
             // Set the pcm data back to the beginning
@@ -159,7 +159,7 @@ namespace SimFileMapperModel
                 finished = onsetDetection.AddFlux(ReadMonoPCM());
             }
             while (!finished);
-
+            fluxes = onsetDetection.fluxes.ToArray();
             // Find peaks
             onsetDetection.FindOnsets(sensitivity);
         }

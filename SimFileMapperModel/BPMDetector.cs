@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NAudio.Wave;
+using System.IO;
 
 namespace SimFileMapperModel
 {
@@ -14,10 +15,15 @@ namespace SimFileMapperModel
         private double BPM;
         private double sampleRate = 44100;
         private double trackLength = 0;
+        private double OFFSET;
 
         public double getBPM()
         {
             return BPM;
+        }
+        public double getOffset()
+        {
+            return OFFSET;
         }
 
         public BPMDetector(string filename)
@@ -37,7 +43,7 @@ namespace SimFileMapperModel
         {
             if (filename != null)
             {
-                using (WaveFileReader reader = new WaveFileReader(filename))
+                using (Stream reader = new Mp3FileReader(filename))
                 {
                     byte[] buffer = new byte[reader.Length];
                     int read = reader.Read(buffer, 0, buffer.Length);
@@ -75,6 +81,7 @@ namespace SimFileMapperModel
             double sumOfSquaresOfDifferences = 0;
             double variance = 0;
             double newC = 0;
+            bool firstBeatFound = false;
             List<double> variances = new List<double>();
 
             // how many energies before and after index for local energy average
@@ -96,7 +103,16 @@ namespace SimFileMapperModel
                 // experimental linear regression - constant calculated according to local energy variance
                 newC = variance * 0.009 + 1.385;
                 if (currentEnergy > newC * qwe)
+                {
                     beats++;
+                    if (!firstBeatFound)
+                    {
+                        double SecondsPerSample = 1.0 / 44100.0;
+                        double MillisecondsPerSecond = 1000.0;
+                        firstBeatFound = true;
+                        OFFSET = i * (SecondsPerSample) * MillisecondsPerSecond;
+                    }
+                }
             }
 
             BPM = beats / (trackLength / 60);

@@ -117,6 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="comboBox1.ToolTip" xml:space="preserve">
+    <value>The amount of subdivisions in one measure. 
+4: only allows orange arrows.
+8: allows orange or blue arrows.
+12: allows orange, blue, and green arrows
+16: allows orange, blue, and yellow arrows
+48: the most precise but most prone to error. this allows all previous arrow types</value>
+  </data>
+  <data name="TXTOffset.ToolTip" xml:space="preserve">
+    <value>The offset in seconds before the song starts
+If you need help finding this, the most reliable way is to open
+the song in ArrowVortex using the button to the right and then
+go to tempo -&gt; adjust sync -&gt; Find BPM -&gt; Apply BPM and get 
+the offset value from there
+</value>
+  </data>
+  <data name="TXTBpm.ToolTip" xml:space="preserve">
+    <value>The BPM of the song. 
+If you need help finding this, the most reliable way is to open
+the song in ArrowVortex using the button to the right and then
+go to tempo -&gt; adjust sync -&gt; Find BPM -&gt; Apply BPM and get 
+the bpm value from there</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

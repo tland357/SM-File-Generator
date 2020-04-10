@@ -25,6 +25,66 @@ namespace SimFileMapperModel.Model
 		{
 			return Steps.SkipIndices(indices).All(x => x == null);
 		}
+		public string ToArrow()
+		{
+			Step[] steps = Steps;
+			StringBuilder builder = new StringBuilder("");
+			switch (steps.Length)
+			{
+				case 48:
+					if (Filter(simple48To4))
+					{
+						steps = steps.PickIndices(simple48To4).ToArray();
+					}
+					else if (Filter(simple48To8))
+					{
+						steps = steps.PickIndices(simple48To8).ToArray();
+					}
+					else if (Filter(simple48To12))
+					{
+						steps = steps.PickIndices(simple48To12).ToArray();
+					}
+					else if (Filter(simple48To16))
+					{
+						steps = steps.PickIndices(simple48To16).ToArray();
+					}
+					break;
+				case 16:
+					if (Filter(simple16To4))
+					{
+						steps = steps.PickIndices(simple16To4).ToArray();
+					}
+					else if (Filter(simple16To8))
+					{
+						steps = steps.PickIndices(simple16To8).ToArray();
+					}
+					break;
+				case 12:
+					if (Filter(simple12To4))
+					{
+						steps = steps.PickIndices(simple12To4).ToArray();
+					}
+					break;
+				case 8:
+					if (Filter(simple8To4))
+					{
+						steps = steps.PickIndices(simple8To4).ToArray();
+					}
+					break;
+			}
+			foreach (Step step in steps)
+			{
+				if (step == null)
+				{
+					builder.AppendLine("    ");
+				}
+				else
+				{
+					builder.AppendLine(step.ToArrows());
+				}
+			}
+			return builder.ToString();
+		}
 		public override string ToString()
 		{
 			Step[] steps = Steps;

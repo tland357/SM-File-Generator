@@ -15,6 +15,15 @@ namespace SimFileMapperView
 			}
 		}
 		
-		
+		public static void ThreadSafeCall(this Control c, Action<Control> Callback)
+		{
+			if (c.InvokeRequired)
+			{
+				c.Invoke(Callback, c);
+			} else
+			{
+				Callback(c);
+			}
+		}
 	}
 }

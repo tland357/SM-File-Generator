@@ -22,7 +22,10 @@ namespace SimFileMapperModel
 
         bool rectify;
 
-        List<float> fluxes;
+        public List<float> fluxes {
+            get;
+            protected set;
+        }
 
 
         // Constructor

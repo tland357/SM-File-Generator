@@ -72,6 +72,11 @@ namespace SimFileMapperView
 			var widget = sender as Control;
 			widget.Text = string.Join("", widget.Text.Where(x => char.IsDigit(x)));
 		}
+		private void NegNumberValidation(object sender, EventArgs e)
+		{
+			var widget = sender as Control;
+			widget.Text = string.Join("", widget.Text.Where(x => char.IsDigit(x) || (x == '-' && widget.Text.LastIndexOf('-') == 0)));
+		}
 		private void FloatVailidation(object sender, EventArgs e)
 		{
 			var widget = sender as Control;
@@ -93,25 +98,31 @@ namespace SimFileMapperView
 				}
 			}
 		}
-		Song song;
+		public Song song;
 		private void mp3Selector_FileFound(object sender, FileSelector.FileFoundEventArgs e)
 		{
 			string fileName = e.FileLocation;
 			try
 			{
 				//if (!fileName.EndsWith(".wav")) throw new Exception("Right now this program only supports wav files");
-				mp3Selector.LockFileFoundEvent = true;
-				mp3Selector.TextBox1.Text = fileName;
-				mp3Selector.LockFileFoundEvent = false;
 				string text = File.ReadAllText(fileName);
 				song = new Song(fileName);
 				BannerSelector.Enabled = BackGroundImageSelector.Enabled = GBXSongSettings.Enabled = true;
 				BTNGenerateData.Enabled = true;
-				TXTBpm.Text = song.BeatsPerMinute.ToString();
-				TXTOffset.Text = song.msTilStart.ToString();
+				//TXTBpm.Text = song.BeatsPerMinute.ToString();
+				//TXTOffset.Text = song.msTilStart.ToString();
+				TXTTitle.Text = e.FileLocation.Split('\\').Last().Replace(".mp3", "").Replace(".sm","");
 				if ((sender as FileSelector).TextBox1.Text == "")
 				{
 					BannerSelector.Enabled = BackGroundImageSelector.Enabled = GBXSongSettings.Enabled = false;
+				}
+				DialogResult result = MessageBox.Show("Would you like to attempt auto-bpm detection? (Warning! this is experimental and prone to error)", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+				if (result == DialogResult.Yes)
+				{
+					double bpm, offset;
+					song.CalculateBPM(e.FileLocation, out bpm, out offset);
+					TXTBpm.Text = bpm.ToString();
+					TXTOffset.Text = offset.ToString();
 				}
 			} catch (Exception ex)
 			{
@@ -141,22 +152,26 @@ namespace SimFileMapperView
 		{
 			try
 			{
-				song.GenerateStepsV2((float)Convert.ToDouble(TXTBpm.Text),(float)Convert.ToDouble(TXTOffset.Text), trackBar2.Value);
+				if (string.IsNullOrWhiteSpace(TXTBpm.Text))
+				{
+					throw new Exception("Must specify a value for BPM!");
+				}
+				if (string.IsNullOrWhiteSpace(TXTOffset.Text))
+				{
+					TXTOffset.Text = "0";
+				}
+				float bpm = (float)Convert.ToDouble(TXTBpm.Text);
+				float offset = (float)Convert.ToDouble(TXTOffset.Text);
+				if (bpm <= 0.0f) throw new Exception("BPM must exceed 0!");
+				song.GenerateStepsV2(bpm,offset, trackBar2.Value, CHKRoundBeatTimings.Checked);
 				StringBuilder builder = new StringBuilder("-----------" + Environment.NewLine);
 				int i = 1;
 				foreach (var measure in song.Measures)
 				{
 					int j = 0;
-					foreach (var step in measure.Steps)
+					foreach (var step in measure.ToArrow().Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries))
 					{
-						if (step == null)
-						{
-							builder.Append(i.ToString().PadLeft(3,'0') + ":" + (++j).ToString().PadLeft(2, '0') + ":    " + Environment.NewLine);
-						}
-						else
-						{
-							builder.Append(i.ToString().PadLeft(3, '0') + ":" + (++j).ToString().PadLeft(2, '0') + ":" + step.ToArrows() + Environment.NewLine);
-						}
+						builder.Append(i.ToString().PadLeft(3, '0') + ":" + (++j).ToString().PadLeft(2, '0') + ":" + step + Environment.NewLine);
 					}
 					builder.Append("-----------" + Environment.NewLine);
 				}
@@ -193,7 +208,7 @@ namespace SimFileMapperView
 					smFile.WriteLine("#MUSIC:" + mp3Selector.FileName.Split('\\').Last() + ";");
 					smFile.WriteLine("#BANNER:" + BannerSelector.FileName.Split('\\').Last() + ";");
 					smFile.WriteLine("#BACKGROUND:" + BackGroundImageSelector.FileName.Split('\\').Last() + ";");
-					smFile.WriteLine("#CDTITLE:;\n#SAMPLESTART:0.000;\n#SAMPLELENGTH:0.000;\n#SELECTABLE:YES;\n#OFFSET:" + (Convert.ToDouble(TXTOffset.Text) / -1000.0));
+					smFile.WriteLine("#CDTITLE:;\n#SAMPLESTART:0.000;\n#SAMPLELENGTH:0.000;\n#SELECTABLE:YES;\n#OFFSET:" + (Convert.ToDouble(TXTOffset.Text)));
 					smFile.WriteLine("#BPMS:0.000=" + TXTBpm.Text + ";");
 					smFile.WriteLine("#STOPS:;\n#BGCHANGES:;\n#FGCHANGES:;");
 					smFile.WriteLine(song.ToString(TXTMapper.Text, TXTDifficultyName.Text, TXTDifficultyNumber.Text));
@@ -225,9 +240,47 @@ namespace SimFileMapperView
 			{
 				using (StreamWriter appender = new StreamWriter(dialog.FileName, append: true))
 				{
-					appender.WriteLine(song.ToString());
+					appender.WriteLine(song.ToString(TXTMapper.Text, TXTDifficultyName.Text, TXTDifficultyNumber.Text));
+				}
+				if (File.Exists("ArrowVortex\\ArrowVortex.exe"))
+				{
+					result = MessageBox.Show("Would you like to open in ArrowVortex?", "Arrow Vortex", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+					if (result == DialogResult.Yes)
+					{
+						Process arrowVortex = new Process()
+						{
+							StartInfo = new ProcessStartInfo("ArrowVortex\\ArrowVortex.exe", '"' + dialog.FileName + '"')
+						};
+						arrowVortex.Start();
+					}
 				}
 			}
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			BpmCalculator Calc = new BpmCalculator(this);
+			Calc.ShowDialog();
+		}
+
+		private void BTNArrowVortex_Click(object sender, EventArgs e)
+		{
+			if (File.Exists("ArrowVortex\\ArrowVortex.exe"))
+			{
+				Process arrowVortex = new Process()
+				{
+					StartInfo = new ProcessStartInfo("ArrowVortex\\ArrowVortex.exe", '"' + mp3Selector.FileName + '"')
+				};
+				arrowVortex.Start();
+			} else
+			{
+				MessageBox.Show("ArrowVortex cannot be found!");
+			}
+		}
+
+		private void panel1_Paint(object sender, PaintEventArgs e)
+		{
+
 		}
 	}
 }

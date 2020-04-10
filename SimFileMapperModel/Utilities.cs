@@ -88,3 +88,38 @@ namespace SimFileMapperModel.Model
 		}
 	}
 }
+
+class Rounder
+{
+	int[] Nums;
+	public Rounder(IEnumerable<int> nums)
+	{
+		Nums = nums.OrderBy(x => x).ToArray();
+	}
+	public Rounder(params int[] nums)
+	{
+		Nums = nums.OrderBy(x => x).ToArray();
+	}
+	private int Diff(int x, int y)
+	{
+		return Math.Abs(x - y);
+	}
+	public int Round(int x)
+	{
+		if (Nums[0] > x) return Nums[0];
+		for (int i = 1; i < Nums.Length - 1; i += 1)
+		{
+			if (Nums[i] <= x && x <= Nums[i + 1])
+			{
+				int d1 = Diff(Nums[i], x);
+				int d2 = Diff(Nums[i + 1], x);
+				return d1 <= d2 ? Nums[i] : Nums[i + 1];
+			}
+		}
+		return Nums[Nums.Length - 1];
+	}
+	public void Round(ref int x)
+	{
+		x = Round(x);
+	}
+}

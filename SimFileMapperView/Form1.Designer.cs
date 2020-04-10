@@ -28,10 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.BTNAddToSimFile = new System.Windows.Forms.Button();
 			this.GBXSongSettings = new System.Windows.Forms.GroupBox();
+			this.BTNBPMCalc = new System.Windows.Forms.Button();
 			this.TXTDifficultyNumber = new System.Windows.Forms.TextBox();
 			this.TXTDifficultyName = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
@@ -47,17 +49,11 @@
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.TXTOffset = new System.Windows.Forms.TextBox();
-			this.JumpPercentLabel = new System.Windows.Forms.Label();
-			this.trackBar1 = new System.Windows.Forms.TrackBar();
-			this.checkBox9 = new System.Windows.Forms.CheckBox();
-			this.checkBox8 = new System.Windows.Forms.CheckBox();
-			this.checkBox6 = new System.Windows.Forms.CheckBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.TXTBpm = new System.Windows.Forms.TextBox();
-			this.checkBox7 = new System.Windows.Forms.CheckBox();
 			this.BTNExportSimFile = new System.Windows.Forms.Button();
 			this.BTNGenerateData = new System.Windows.Forms.Button();
 			this.BannerSelector = new FileSelectorLibrary.FileSelector();
@@ -65,10 +61,12 @@
 			this.mp3Selector = new FileSelectorLibrary.FileSelector();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.BTNArrowVortex = new System.Windows.Forms.Button();
+			this.CHKRoundBeatTimings = new System.Windows.Forms.CheckBox();
 			this.panel1.SuspendLayout();
 			this.GBXSongSettings.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -86,6 +84,7 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(634, 492);
 			this.panel1.TabIndex = 1;
+			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
 			// 
 			// BTNAddToSimFile
 			// 
@@ -104,6 +103,9 @@
 			this.GBXSongSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.GBXSongSettings.Controls.Add(this.CHKRoundBeatTimings);
+			this.GBXSongSettings.Controls.Add(this.BTNArrowVortex);
+			this.GBXSongSettings.Controls.Add(this.BTNBPMCalc);
 			this.GBXSongSettings.Controls.Add(this.TXTDifficultyNumber);
 			this.GBXSongSettings.Controls.Add(this.TXTDifficultyName);
 			this.GBXSongSettings.Controls.Add(this.label10);
@@ -119,17 +121,11 @@
 			this.GBXSongSettings.Controls.Add(this.comboBox1);
 			this.GBXSongSettings.Controls.Add(this.label3);
 			this.GBXSongSettings.Controls.Add(this.TXTOffset);
-			this.GBXSongSettings.Controls.Add(this.JumpPercentLabel);
-			this.GBXSongSettings.Controls.Add(this.trackBar1);
-			this.GBXSongSettings.Controls.Add(this.checkBox9);
-			this.GBXSongSettings.Controls.Add(this.checkBox8);
-			this.GBXSongSettings.Controls.Add(this.checkBox6);
 			this.GBXSongSettings.Controls.Add(this.label4);
 			this.GBXSongSettings.Controls.Add(this.textBox2);
 			this.GBXSongSettings.Controls.Add(this.label2);
 			this.GBXSongSettings.Controls.Add(this.label1);
 			this.GBXSongSettings.Controls.Add(this.TXTBpm);
-			this.GBXSongSettings.Controls.Add(this.checkBox7);
 			this.GBXSongSettings.Enabled = false;
 			this.GBXSongSettings.Location = new System.Drawing.Point(9, 161);
 			this.GBXSongSettings.Name = "GBXSongSettings";
@@ -137,6 +133,17 @@
 			this.GBXSongSettings.TabIndex = 6;
 			this.GBXSongSettings.TabStop = false;
 			this.GBXSongSettings.Text = "Song Settings";
+			// 
+			// BTNBPMCalc
+			// 
+			this.BTNBPMCalc.Enabled = false;
+			this.BTNBPMCalc.Location = new System.Drawing.Point(232, 180);
+			this.BTNBPMCalc.Name = "BTNBPMCalc";
+			this.BTNBPMCalc.Size = new System.Drawing.Size(168, 40);
+			this.BTNBPMCalc.TabIndex = 33;
+			this.BTNBPMCalc.Text = "Open BPM Calculator";
+			this.BTNBPMCalc.UseVisualStyleBackColor = true;
+			this.BTNBPMCalc.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// TXTDifficultyNumber
 			// 
@@ -239,7 +246,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(416, 25);
+			this.label5.Location = new System.Drawing.Point(418, 88);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(134, 17);
 			this.label5.TabIndex = 17;
@@ -254,11 +261,12 @@
             "12",
             "8",
             "4"});
-			this.comboBox1.Location = new System.Drawing.Point(556, 20);
+			this.comboBox1.Location = new System.Drawing.Point(558, 85);
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(50, 24);
 			this.comboBox1.TabIndex = 16;
 			this.comboBox1.Text = "48";
+			this.toolTip1.SetToolTip(this.comboBox1, resources.GetString("comboBox1.ToolTip"));
 			this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
 			// 
 			// label3
@@ -266,9 +274,9 @@
 			this.label3.AutoSize = true;
 			this.label3.Location = new System.Drawing.Point(229, 56);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(82, 17);
+			this.label3.Size = new System.Drawing.Size(71, 17);
 			this.label3.TabIndex = 15;
-			this.label3.Text = "Offset (ms):";
+			this.label3.Text = "Offset (s):";
 			// 
 			// TXTOffset
 			// 
@@ -277,62 +285,8 @@
 			this.TXTOffset.Name = "TXTOffset";
 			this.TXTOffset.Size = new System.Drawing.Size(83, 22);
 			this.TXTOffset.TabIndex = 14;
+			this.toolTip1.SetToolTip(this.TXTOffset, resources.GetString("TXTOffset.ToolTip"));
 			this.TXTOffset.TextChanged += new System.EventHandler(this.FloatVailidation);
-			// 
-			// JumpPercentLabel
-			// 
-			this.JumpPercentLabel.AutoSize = true;
-			this.JumpPercentLabel.Location = new System.Drawing.Point(416, 158);
-			this.JumpPercentLabel.Name = "JumpPercentLabel";
-			this.JumpPercentLabel.Size = new System.Drawing.Size(171, 17);
-			this.JumpPercentLabel.TabIndex = 13;
-			this.JumpPercentLabel.Text = "Suggested Jump Percent:";
-			// 
-			// trackBar1
-			// 
-			this.trackBar1.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.trackBar1.Enabled = false;
-			this.trackBar1.Location = new System.Drawing.Point(419, 177);
-			this.trackBar1.Maximum = 100;
-			this.trackBar1.Name = "trackBar1";
-			this.trackBar1.Size = new System.Drawing.Size(171, 56);
-			this.trackBar1.TabIndex = 12;
-			this.trackBar1.TickFrequency = 10;
-			this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
-			this.trackBar1.Value = 15;
-			// 
-			// checkBox9
-			// 
-			this.checkBox9.AutoSize = true;
-			this.checkBox9.Enabled = false;
-			this.checkBox9.Location = new System.Drawing.Point(419, 134);
-			this.checkBox9.Name = "checkBox9";
-			this.checkBox9.Size = new System.Drawing.Size(103, 21);
-			this.checkBox9.TabIndex = 11;
-			this.checkBox9.Text = "Allow Mines";
-			this.checkBox9.UseVisualStyleBackColor = true;
-			// 
-			// checkBox8
-			// 
-			this.checkBox8.AutoSize = true;
-			this.checkBox8.Enabled = false;
-			this.checkBox8.Location = new System.Drawing.Point(419, 107);
-			this.checkBox8.Name = "checkBox8";
-			this.checkBox8.Size = new System.Drawing.Size(97, 21);
-			this.checkBox8.TabIndex = 10;
-			this.checkBox8.Text = "Allow Rolls";
-			this.checkBox8.UseVisualStyleBackColor = true;
-			// 
-			// checkBox6
-			// 
-			this.checkBox6.AutoSize = true;
-			this.checkBox6.Enabled = false;
-			this.checkBox6.Location = new System.Drawing.Point(419, 53);
-			this.checkBox6.Name = "checkBox6";
-			this.checkBox6.Size = new System.Drawing.Size(107, 21);
-			this.checkBox6.TabIndex = 8;
-			this.checkBox6.Text = "Allow Hands";
-			this.checkBox6.UseVisualStyleBackColor = true;
 			// 
 			// label4
 			// 
@@ -345,6 +299,7 @@
 			// 
 			// textBox2
 			// 
+			this.textBox2.Enabled = false;
 			this.textBox2.Location = new System.Drawing.Point(368, 83);
 			this.textBox2.MaxLength = 1;
 			this.textBox2.Name = "textBox2";
@@ -381,18 +336,8 @@
 			this.TXTBpm.Name = "TXTBpm";
 			this.TXTBpm.Size = new System.Drawing.Size(124, 22);
 			this.TXTBpm.TabIndex = 0;
+			this.toolTip1.SetToolTip(this.TXTBpm, resources.GetString("TXTBpm.ToolTip"));
 			this.TXTBpm.TextChanged += new System.EventHandler(this.FloatVailidation);
-			// 
-			// checkBox7
-			// 
-			this.checkBox7.AutoSize = true;
-			this.checkBox7.Enabled = false;
-			this.checkBox7.Location = new System.Drawing.Point(419, 80);
-			this.checkBox7.Name = "checkBox7";
-			this.checkBox7.Size = new System.Drawing.Size(155, 21);
-			this.checkBox7.TabIndex = 9;
-			this.checkBox7.Text = "Allow JackHammers";
-			this.checkBox7.UseVisualStyleBackColor = true;
 			// 
 			// BTNExportSimFile
 			// 
@@ -428,6 +373,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.BannerSelector.BackColor = System.Drawing.SystemColors.Control;
 			this.BannerSelector.ButtonText = "Select Cover Image";
+			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BannerSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -524,6 +473,10 @@
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
 			this.BackGroundImageSelector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.BackGroundImageSelector.Enabled = false;
@@ -538,7 +491,7 @@
 			// 
 			// mp3Selector
 			// 
-			this.mp3Selector.AllowedFileTypes = "mp3,wav";
+			this.mp3Selector.AllowedFileTypes = "mp3";
 			this.mp3Selector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.mp3Selector.ButtonText = "Select Song";
@@ -578,9 +531,13 @@
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
 			this.mp3Selector.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-			this.mp3Selector.Filter = "Music Files (*.mp3),(*.wav)|*.mp3;*.wav";
+			this.mp3Selector.Filter = "Music Files (*.mp3)|*.mp3";
 			this.mp3Selector.Location = new System.Drawing.Point(9, 9);
 			this.mp3Selector.LockFileFoundEvent = false;
 			this.mp3Selector.Name = "mp3Selector";
@@ -618,6 +575,28 @@
 			this.textBox1.Size = new System.Drawing.Size(275, 492);
 			this.textBox1.TabIndex = 2;
 			// 
+			// BTNArrowVortex
+			// 
+			this.BTNArrowVortex.Location = new System.Drawing.Point(421, 21);
+			this.BTNArrowVortex.Name = "BTNArrowVortex";
+			this.BTNArrowVortex.Size = new System.Drawing.Size(187, 57);
+			this.BTNArrowVortex.TabIndex = 34;
+			this.BTNArrowVortex.Text = "Open ArrowVortex From Song";
+			this.BTNArrowVortex.UseVisualStyleBackColor = true;
+			this.BTNArrowVortex.Click += new System.EventHandler(this.BTNArrowVortex_Click);
+			// 
+			// CHKRoundBeatTimings
+			// 
+			this.CHKRoundBeatTimings.AutoSize = true;
+			this.CHKRoundBeatTimings.Checked = true;
+			this.CHKRoundBeatTimings.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.CHKRoundBeatTimings.Location = new System.Drawing.Point(421, 116);
+			this.CHKRoundBeatTimings.Name = "CHKRoundBeatTimings";
+			this.CHKRoundBeatTimings.Size = new System.Drawing.Size(132, 38);
+			this.CHKRoundBeatTimings.TabIndex = 35;
+			this.CHKRoundBeatTimings.Text = "Round to Likely \r\nBeat Timings";
+			this.CHKRoundBeatTimings.UseVisualStyleBackColor = true;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -632,7 +611,6 @@
 			this.GBXSongSettings.ResumeLayout(false);
 			this.GBXSongSettings.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
@@ -643,7 +621,6 @@
 
 		protected System.Windows.Forms.Panel panel1;
 		protected System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		protected FileSelectorLibrary.FileSelector mp3Selector;
 		protected FileSelectorLibrary.FileSelector BackGroundImageSelector;
 		protected FileSelectorLibrary.FileSelector BannerSelector;
 		private System.Windows.Forms.Button BTNExportSimFile;
@@ -653,13 +630,7 @@
 		private System.Windows.Forms.TextBox TXTBpm;
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.CheckBox checkBox7;
-		private System.Windows.Forms.CheckBox checkBox6;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label JumpPercentLabel;
-		private System.Windows.Forms.TrackBar trackBar1;
-		private System.Windows.Forms.CheckBox checkBox9;
-		private System.Windows.Forms.CheckBox checkBox8;
 		private System.Windows.Forms.Button BTNAddToSimFile;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Label label3;
@@ -677,6 +648,11 @@
 		private System.Windows.Forms.TextBox TXTDifficultyName;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.ToolTip toolTip1;
+		private System.Windows.Forms.Button BTNBPMCalc;
+		public FileSelectorLibrary.FileSelector mp3Selector;
+		private System.Windows.Forms.Button BTNArrowVortex;
+		private System.Windows.Forms.CheckBox CHKRoundBeatTimings;
 	}
 }
 

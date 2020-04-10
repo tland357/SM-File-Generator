@@ -56,6 +56,20 @@ namespace SimFileMapperModel
 				StartsWithPos[startFoot].Add(this);
 			}
 		}
+
+		public static IEnumerable<Step> StepStream(bool startsOnRight)
+		{
+			StepPattern pat = startsOnRight ? StartsOnRight.GetRandom() : StartsOnLeft.GetRandom();
+			while (true)
+			{
+				foreach (var step in pat.Steps)
+				{
+					yield return step;
+				}
+				pat = pat.GetNextViablePattern();
+			}
+		}
+
 		public StepPattern(IList<int> steps, int startFoot, int endFoot, int suggestedNextFoot, IList<int> SuggestedNextPositions) : this(steps.Select(x => new Step(x)).ToList(), startFoot, endFoot, suggestedNextFoot, SuggestedNextPositions) { }
 		public static DIFFICULTY Diff;
 		public StepPattern GetNextViablePattern()
